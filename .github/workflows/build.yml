@@ -1,0 +1,50 @@
+name: Create NuGet package
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET SDK 7.x
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '7.x'
+
+    - name: Setup .NET SDK 8.x
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '8.x'
+
+    - name: Restore NuGet packages
+      run: dotnet restore 
+      
+    - name: Read version from .csproj
+      id: read_version
+      shell: pwsh
+      run: |
+        $xml = [xml](Get-Content MultiplexingServiceClient/MultiplexingServiceClient.csproj)
+        $version = $xml.Project.PropertyGroup.Version
+        $versionParts = $version -split '\.'
+        $major = $versionParts[0]
+        $minor = $versionParts[1]
+        $buildId = $env:GITHUB_RUN_NUMBER
+        $newVersion = "$major.$minor.$buildId"
+        echo "newVersion=$newVersion" >> $env:GITHUB_ENV
+
+    - name: Build with new version
+      run: dotnet build -c Release /p:Version=${{ env.newVersion }}
+
+    - name: Publish NuGet package as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuget-package
+        path: MultiplexingServiceClient/bin/Release/*.nupkg

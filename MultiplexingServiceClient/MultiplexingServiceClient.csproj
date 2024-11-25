@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<TargetFrameworks>net7.0;net8.0;net462;net472</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<AssemblyName>Fic.Dataverse.MultiplexingServiceClient</AssemblyName>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>Dynamics;CommonDataService;CDS;PowerApps;PowerPlatform;ServiceClient;Dataverse</PackageTags>
+		<Description>MultiplexingServiceClient is a .NET library designed to optimize and manage multiple connections to Microsoft Dataverse environments. It supports executing various types of requests (CreateMultiple, UpdateMultiple, ExecuteMultiple) in parallel, ensuring efficient use of resources and improved performance.</Description>
+		<Title>MultiplexingServiceClient</Title>
+		<Company>DynamicsNinja</Company>
+		<Authors>DynamicsNinja</Authors>
+		<RootNamespace>Fic.Dataverse</RootNamespace>
+		<PackageProjectUrl>https://github.com/DynamicsNinja/MultiplexingServiceClient</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/DynamicsNinja/MultiplexingServiceClient</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReleaseNotes>1.0.0
+- Initial version of the library</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\docs\images\icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.PowerPlatform.Dataverse.Client" Version="1.2.2" />
+	</ItemGroup>
+
+</Project>
