@@ -20,7 +20,7 @@ Manages ServiceClient instances and provides methods to clone and retrieve servi
 To install the **MultiplexingServiceClient** library, add the following NuGet package to your project:
 
 ```sh
-dotnet add package MultiplexingServiceClient
+dotnet add package Fic.Dataverse.MultiplexingServiceClient
 ```
 
 or
@@ -28,7 +28,7 @@ or
 Use the NuGet Package Manager in Visual Studio:
 
 1. Right-click on your project in Solution Explorer and select "Manage NuGet Packages".
-2. Search for `MultiplexingServiceClient`.
+2. Search for `Fic.Dataverse.MultiplexingServiceClient`.
 3. Click "Install" to add the package to your project.
 
 ## 🚀 How to Use
